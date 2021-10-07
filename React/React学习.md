@@ -2165,4 +2165,9 @@ click事件对应的是`dispatchDiscreteEvent`事件处理函数，然后调用r
 
 
 
+# Vue和React的区别
 
+- 数据流程方向，react单向setState改变，react自己不会帮你改变，vue双向
+- diff算法区别，vue diff算法各优一些，结合了react的算法，增加了自己的想法提升性能
+- 设计理念区别
+- 框架选型上，感觉react用起来比较的重一些，对于那些不是那么重的项目，感觉vue就好了，重一些的用react。

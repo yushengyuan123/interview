@@ -934,17 +934,18 @@ a.sort()//[0,1,10,15,5]
 6. 关于传参，共享的问题，还有一个中更加含蓄的手段，我们可以通过**盗用构造函数来解决，call，apply这些手段**。盗用构造函数不需要用到prototype原型对象，本质上它还是在本对象中添加属性，例子：
 
    ```js
-function Sub(list) {
+   function Sub(list) {
      this.name = 123
-
+   
      Super.call(this, list)
-}
+   }
+   
+   function Super(list) {
+        this.friend = list
+   }
    
    ```
 
-function Super(list) {
-     this.friend = list
-}
    ```
    
    盗用构造函数的问题，第一，因为本质上其实始直接在this中添加属性和方法，可能会有重名问题。第二：子类无法访问到父类的原型上定义的方法，没有办法形成一条继承链，
@@ -1117,7 +1118,7 @@ function Person() {}
 
 let friend = new Person()
 
-Person.prototype.xxx = {
+Person.prototype = {
   xxx: function() {}
 }
 
